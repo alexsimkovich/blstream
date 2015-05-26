@@ -1,0 +1,23 @@
+{
+  "author": "Alex Simkovich",
+  "name": "Squiz",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "dependencies": {
+    "custom-error-generator": "^7.0.0",
+    "grunt": "^0.4.5",
+    "grunt-browser-sync": "*",
+    "grunt-contrib-clean": "*",
+    "grunt-contrib-concat": "*",
+    "grunt-contrib-cssmin": "*",
+    "grunt-contrib-less": "*",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-watch": "*",
+    "load-grunt-tasks": "*",
+    "lowdb": "^0.7.3",
+    "time-grunt": "*"
+  }
+}

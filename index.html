@@ -1,0 +1,58 @@
+<!doctype html>
+<html class="no-js" lang="en" id="ng-app" ng-app="formApp">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>BLStream test task</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href='http://fonts.googleapis.com/css?family=Raleway:400,200' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="assets/css/main.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+</head>
+<body>
+<div class="wrapper">
+  <div class="container">
+    <!-- Main form -->
+    <div class="row login_box">
+      <div class="col-xs-12 text-center">
+        <div class="outter"><img src="http://lorempixel.com/output/people-q-c-100-100-1.jpg" class="image-circle"/></div>
+        <h1>Hi Guest</h1>
+      </div>
+      <div class="col-md-12 col-xs-12 login_control">
+        <!-- form -->
+        <form method="post" name="myForm" ng-controller="ValidationController" novalidate ng-submit="submitForm('//api.test/auth')">
+          <fieldset>
+            <div class="form-group">
+              <label class="label" for="email">Email address</label>
+              <input class="form-control" id="email" type="email" name="emailfield" ng-model="user.email" value="" required/>
+              <div ng-show="myForm.$submitted || myForm.emailfield.$touched">
+                <div class="error" ng-show="myForm.emailfield.$error.required && myForm.emailfield.$dirty">Email field is required</div>
+                <div class="error" ng-show="!myForm.emailfield.$error.required && myForm.emailfield.$error.email && myForm.emailfield.$dirty">Invalid email</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="label" for="password">Password</label>
+              <input class="form-control" id="password" type="password" name="passwordfield" ng-model="user.password" ng-minlength="8" required ng-pattern="/(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z])/"/>
+              <div ng-show="myForm.$submitted || myForm.passwordfield.$touched">
+                <div class="error" ng-show="myForm.passwordfield.$error.required && myForm.passwordfield.$dirty">Password field is required</div>
+                <div class="error" ng-show="!myForm.passwordfield.$error.required && myForm.passwordfield.$error.minlength && myForm.passwordfield.$dirty">Passwords must be minimum of 8 characters</div>
+                <div class="error" ng-show="!myForm.passwordfield.$error.required && !myForm.passwordfield.$error.minlength && !myForm.passwordfield.$error.maxlength && myForm.passwordfield.$error.pattern && myForm.passwordfield.$dirty">Must contain one lower &amp; uppercase letter, and one non-alpha character (a number or a symbol)</div>
+              </div>
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-orange" ng-disabled="!myForm.$valid">Login</button>
+            </div>
+          </fieldset>
+        </form>
+        <!-- /form -->
+      </div>
+    </div>
+    <!-- /Main form -->
+  </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+<script src="app/app.js"></script>
+<script src="app/controllers/controller.js"></script>
+</body>
+</html>
